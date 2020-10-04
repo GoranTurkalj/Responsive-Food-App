@@ -1,5 +1,5 @@
 <template>
-  <div class="grey">
+  <div class="green">
     <h1>Hello {{ name }}</h1>
     <hello-component></hello-component>
   </div>
@@ -22,7 +22,7 @@ export default {
 </script>
 <style lang="scss">
  
-    .grey {
+    .green {
 
       h1 {
         color: $primaryGreen; 

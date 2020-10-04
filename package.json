@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Responsive Vue App",
   "scripts": {
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --open",
+    "watch": "webpack --watch"
+
   },
   "author": "Goran Turkalj",
   "license": "ISC",

@@ -8,26 +8,32 @@ module.exports = {
   mode: "development",
   devtool: "inline-source-map",
   devServer: {
-    contentBase: "/dist"
+    contentBase: "/dist",
   },
   entry: "./src/main.js",
   output: {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),
+    publicPath: "/dist/",
   },
   module: {
     rules: [
+      // rulese for assets
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
-          {loader: "file-loader", options: {
-            esModule: false, 
-            name: '[name].[contenthash].[ext]',
-       
-          }},
-          "vue-loader",
+          {
+            loader: "file-loader",
+            options: {
+              esModule: false,
+              name: "[name].[hash].[ext]",
+              outputPath: "assets/images",
+              publicPath: "assets/images",
+            },
+          },
         ],
       },
+      //BABEL LOADER - JAVASCRIPT TRANSPILING
       {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
@@ -40,6 +46,7 @@ module.exports = {
           },
         ],
       },
+      //SASS RULES
       {
         test: /\.scss$/,
         exclude: "/node_modules/",
@@ -61,14 +68,15 @@ module.exports = {
           },
         ],
       },
+      // VUE FILES
       { test: /\.vue$/, loader: "vue-loader" },
     ],
   },
   plugins: [
     new VueLoaderPlugin(),
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     new HtmlWebpackPlugin({
-      title: "Responsive Food App",
+      title: "TESTING IMAGE LOADING",
       template: "./src/index.html",
     }),
     new MiniCssExtractPlugin({
