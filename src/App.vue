@@ -1,6 +1,6 @@
 <template>
   <div class="green">
-    <h1>Hello {{ name }}</h1>
+    <h1>Hello {{ name }}!</h1>
     <hello-component></hello-component>
   </div>
 </template>
